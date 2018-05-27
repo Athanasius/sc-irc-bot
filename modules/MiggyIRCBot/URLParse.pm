@@ -46,6 +46,8 @@ my %sites = (
   '^http(s)?:\/\/(www|i)\.dailymail\.co\.uk' => { get => \&ignore_url, parse => undef },
   '^http(s)?:\/\/www\.telegraph\.co\.uk' => { get => \&ignore_url, parse => undef },
   '^http(s)?:\/\/www\.thesun\.co\.uk' => { get => \&ignore_url, parse => undef },
+  '^http(s)?:\/\/twitter\.com' => { get => \&ignore_url, parse => undef },
+  '^http(s)?:\/\/t\.co' => { get => \&ignore_url, parse => undef },
 
 );
 
