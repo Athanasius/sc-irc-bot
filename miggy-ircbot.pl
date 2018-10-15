@@ -49,6 +49,8 @@ POE::Session->create(
       irc_botcmd_atv
       irc_botcmd_10ftc
       irc_botcmd_commlink
+      irc_botcmd_fleet
+      irc_botcmd_fans
       irc_console_service irc_console_connect irc_console_authed irc_console_close irc_console_rw_fail
       ) ]
   ],
@@ -89,6 +91,12 @@ sub _start {
         commlink => {
           info => "Displays the URL for the RSI Comm-Link",
           aliases => [ 'comm-link', 'latest', 'news' ],
+        },
+        fleet => {
+          info => "In case you forgot what 'Fleet' means in the crowdfund output"
+        },
+        fans => {
+          info => "In case you forgot what 'Fans' means in the crowdfund output"
         },
         'atv' => {
           info => "Displays info for About the Verse, what it is, when it's available etc.",
@@ -493,6 +501,23 @@ sub irc_botcmd_commlink {
 
   $irc->yield('privmsg', $channel, "The latest news from Roberts Space Industries and Cloud Imperium Games about Star Citizen should be on: http://www.robertsspaceindustries.com/comm-link/ (NB: A few posts only go to the front page: http://www.robertsspaceindustries.com/ )");
 }
+
+sub irc_botcmd_fleet { 
+  my ($kernel, $session, $sender, $channel, $url) = @_[KERNEL, SESSION, SENDER, ARG1, ARG2];
+  my $nick = (split /!/, $_[ARG0])[0];
+  my $poco = $sender->get_heap();
+
+  $irc->yield('privmsg', $channel, "'Fleet' in my crowdfund info is the number of ships in hangars");
+}
+
+sub irc_botcmd_fans { 
+  my ($kernel, $session, $sender, $channel, $url) = @_[KERNEL, SESSION, SENDER, ARG1, ARG2];
+  my $nick = (split /!/, $_[ARG0])[0];
+  my $poco = $sender->get_heap();
+
+  $irc->yield('privmsg', $channel, "'Fans' in my crowdfund info is the number of accounts created on the RSI website");
+}
+
 ###########################################################################
 
 ###########################################################################

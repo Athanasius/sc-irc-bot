@@ -48,6 +48,9 @@ my %sites = (
   '^http(s)?:\/\/www\.thesun\.co\.uk' => { get => \&ignore_url, parse => undef },
   '^http(s)?:\/\/twitter\.com' => { get => \&ignore_url, parse => undef },
   '^http(s)?:\/\/t\.co' => { get => \&ignore_url, parse => undef },
+  '^http(s)?:\/\/williampitcock\.com' => { get => \&ignore_url, parse => undef },
+  '^http(s)?:\/\/bryanostergaard\.com' => { get => \&ignore_url, parse => undef },
+  '^http(s)?:\/\/MattSTrout.\.com' => { get => \&ignore_url, parse => undef },
 
 );
 
